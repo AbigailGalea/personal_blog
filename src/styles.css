@@ -5,12 +5,8 @@
 }
 
 div{
-	padding-left: 0.5%;
+	padding: 0.5%;
 	font-family: verdana;
-}
-
-.icon{
-height: 1em;
 }
 
 h1{
@@ -21,6 +17,11 @@ h1{
 p{
 font-family: verdana;
 font-size: 100%;
+}
+
+.column {
+  float: left;
+  width: 50%;
 }
 
 .topnav {
@@ -43,6 +44,23 @@ font-size: 100%;
 .topnav a:hover {
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
+}
+
+.topnav a:hover > .icon{
+	filter:brightness(1.0)
+}
+
+.icon{
+	height: 1em;
+	filter:brightness(0.0)
+}
+
+#profile_pic{
+	float:right;
+	border-radius:50%; 
+	padding:3%;
+	max-width: 32%; 
+	height: auto;
 }
 
 #gallery {
@@ -84,6 +102,3 @@ font-size: 100%;
 .project :hover + .description{
 	visibility:visible;
 }
-
-
-  
