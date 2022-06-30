@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -6,38 +6,400 @@
 <base href="../../../personal_blog">
 <link rel="stylesheet" href="src/styles.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project title</title>
+<title>No place like homes.</title>
 </head>
 
 <body>
-
-<div class="topnav">
-  <a href="index.html">
-  <img class="icon" src='src/images/home_icon.png'">
-  </a>
-
-  <a href="src/pages/projects.html">
-  Projects
-  </a>
-
-  <a href="src/pages/blog.html">
-  Blog
-  </a>
-
-  <a href="src/pages/contact.html">
-  Contact
-  </a>
-</div>
+  <div class="topnav">
+    <a href="index.html">
+    <img class="icon" style= height:1em src='src/images/home_icon.png'">
+    </a>
+  
+    <a href="src/pages/projects.html">
+    Projects
+    </a>
+  
+    <a href="src/pages/blog.html">
+    Blog
+    </a>
+  
+    <a href="src/pages/contact.html">
+    Contact
+    </a>
+  </div>
 
 <div>
-	<div>
-		<h1>Project Name</h1>
-	</div>
+  <h1>No place like homes.</h1>
 
-	<div>
-		<p>Text about the project</p>
-	</div>
+  <iframe src="https://i.simmer.io/@abigalea45/no-place-like-homes" style="width:960px;height:600px"></iframe>
+  
+  <p>
+    Growing up, I have always lived in Malta, an
+    archipelago of three tiny islands in the middle of
+    the Mediterranean. In the summer of 2020 I
+    moved to Norrkoping in Sweden to pursue my
+    Master’s degree at Linkoping University. I left
+    Malta and two flights later I was in Stockholm. I
+    spent the next year and a half living and
+    exploring Sweden. I found these two countries
+    culturally quite different. I found myself in new
+    situations and thinking in new ways. I made a lot
+    of new friends along the way and missed the
+    ones back in Malta.
+    After this experience, I find myself at a
+    crossroads- I am unsure of where to call home.
+    Through this exhibition I wanted to capture the
+    essence of my memories in both places. When
+    faced with this dilemma, where do you call
+    home?
+    <br><br>
 
+    This project was made using Unity Engine
+    (2021.2.7f1) with some assets being made and
+    imported from Blender, MetaShape (by Agisoft)
+    as well as online sources. For some parts of the
+    production, online tutorials for Unity were also
+    followed to achieve the desired effects.
+    The following subsections will explain the
+    process of making and putting together
+    everything. Firstly a brief explanation of how the
+    first person controller was made will be given in
+    2.1. In 2.2 the set up of space and portal will be
+    explained. Then an explanation will be given for
+    how the height maps of the countries were
+    made in 2.3. The process of making the picture
+    frames in Blender will be explained in 2.4. 2.5
+    will describe briefly how the spin animation was
+    added to the boat model and in the following
+    subsection (2.6) an explanation of how the
+    mirrors on the wall were made and rendered
+    will be given. An explanation of how
+    photogrammetry was used to create the 3D
+    model of the pastizzi will be given in 2.7. In 2.8,
+    a short description of the user interface will be
+    given.
+  </p>
+
+  <h1>First person controller (FPC)</h1> 
+  <p>
+    To make the first person controller which the
+    user could use to explore the exhibit, I followed
+    Brackey’s tutorial on YouTube for building an
+    FPC. To summarise the process; one first has to create
+    a player object with a character controller
+    component and capsule which acts as the
+    player’s body. Then one adds a camera which
+    will act as the viewport (i.e. player’s eyes) and
+    aligns it to where the eyes of the player would
+    be.
+    <br><br>
+
+    A script is added for controlling the movement
+    of the camera using the mouse. The main idea of
+    this script is that as the mouse is moved left and
+    right, the entire player body is spun around.
+    When the mouse is moved up or down the
+    vertical angle of the camera is shifted.
+    Combining these two functions together allows
+    the player to look around them (360° on the
+    x-axis and 180° on the y-axis).
+    <br><br>
+
+    Furthermore, another script is used to allow the
+    player to move around using the arrow keys.
+    Essentially the script takes key presses as
+    controls to transform the location of the player
+    within the world, taking into consideration the
+    current location and looking direction.
+  </p>
+
+  <h1>Portal set-up</h1> 
+  <p>
+    When exploring the space, one is able to
+    transition between Malta’s exhibit and Sweden’s
+    exhibit by passing through a portal. To set this
+    up, another tutorial by Brackeys was followed.
+    <br><br>
+
+    The set-up starts off with two areas being
+    created. Portals are then added to both rooms
+    and planes are placed inside them facing
+    opposite directions. Similar to the process of
+    making mirrors (explained in 2.6), the planes
+    used camera images to constantly render and
+    show what the other world looked like based on
+    where the player was positioned and looking.
+    <br><br>
+
+    Using scripts and an additional collider plane in
+    every portal the player is then allowed to move
+    from one world to another. In essence when the
+    player body collides with the plane in the portal
+    from the correct direction, their body is moved to
+    the location of the other plane with a few
+    adjustments to make the transition feel natural.
+  </p>
+
+<h1>Height maps</h1>
+  <p>
+    Using black and white 2D height maps available
+    online for Malta (Fig. 2.3.1) and Sweden (Fig.
+    2.3.2), Blender was used to build 3D height
+    maps. The process involved importing the 2D
+    images into Blender and then using their pixel
+    brightness as an indicator of height. The darkest
+    (completely black) pixels were displaced most
+    along the y-axis. This process gave a 3D map of
+    heights in different places.
+  </p>
+
+<h1>Picture frames</h1>
+  <p>
+    Making the picture frames in Blender was a
+    relatively simple process. Two cubes were
+    resized and shaped and then one was
+    subtracted from the other using the boolean
+    operator to give the frame shape. A different
+    material was given to the face which would hold
+    the image and the model was exported to Unity
+    (Fig. 2.4.1).
+  </p>
+
+<h1>Boat spinning animation</h1>
+  <p>
+    To create the boat spinning animation I followed
+    a short tutorial by Windows. The basic idea of
+    the script which spins the boat, is that at every
+    rendered frame, the rotation of the boat is
+    changed along the chosen axis by a given
+    amount (based on speed chosen).
+  </p>
+
+<h1>Mirrors</h1>
+  <p>
+    When looking at the boat model in the Malta
+    side of the museum, visitors are able to see
+    themselves as a capsule in a mirror, as they
+    move around, so does their character in the
+    mirror surface. This was done using a camera
+    facing outwards from the mirror surface
+    projecting onto a render texture which was
+    applied to the mirror’s material. This way, the
+    camera was able to take in a video input of the
+    scene and concurrently display it on the mirror’s
+    surface.
+  </p>
+
+<h1>Photogrammetry asset</h1>
+  <p>
+    The 3d model of the pastizzi was made using
+    MetaShape by Agisoft, following the instructions
+    given in the course by Masaki Hayashi.
+    19 pictures of the pastizzi were taken from
+    various angles using a Huawei mobile phone
+    camera. Then using the workflow menu the
+    photos were aligned and a dense point cloud
+    was built based on that. Based on the dense
+    cloud, a mesh was built as well as a texture
+    based on the pictures. The model was then
+    briefly edited in Blender, to remove the flooring,
+    and imported into the Unity project as a model
+    with a texture.
+  </p>
+
+<h1>Controls UI</h1>
+  <p>
+    To allow users to be able to see what controls
+    they need to move around in the environment
+    and control their character, a small interface was
+    added. The user could press a button at the
+    bottom left corner (“Controls”) and they would
+    get instructions on how to operate their
+    character. By pressing the same button again
+    they could then hide the panel again and
+    continue viewing the museum. This was done by
+    attaching a short script to a UI button object,
+    which activated and deactivated the controls
+    help panel depending on the current status.
+    <br><br>
+
+    The final product of this work was a 3D virtual
+    museum project in Unity. Visitors to this virtual
+    museum could walk around the space and
+    explore the different pictures and 3D models.
+    Upon entering the museum, the visitor sees a
+    wall of pictures of Malta, on a traditional
+    limestone brick wall, and a floor covered in
+    traditional Maltese tiles (Fig.3.1). To their left
+    they see a portal arch that leads to Sweden’s
+    exhibit, ahead of them, a 3D model of a
+    traditional Maltese fishing boat called a Kajjik
+    (Fig.3.2).
+    <br><br>
+
+    The pictures on the walls seek to capture life on
+    the Maltese islands whereas the height map
+    (Fig. 3.3) indicates what the topology of the
+    landscape looks like. The scanned model of
+    traditional food, a pastizz, represents culture and
+    day to day life (Fig.3.4).
+    <br><br>
+
+    When the visitor is done looking around Malta’s
+    exhibit they can then walk through the arch to
+    Sweden. Here visitors can again look at pictures
+    of Sweden as well as the height map of the
+    land. As for a Swedish tradition, I chose to
+    present a Dalahäst asset (fig. 3.5) which I
+    downloaded from an online website. This model
+    reminds me of life in Sweden because I got one
+    as a Christmas gift from one of my friends in
+    Sweden and I always keep it in my room.
+    <br><br>
+
+    To review how the museum was received, the
+    project was made available online at the
+    following link:
+    <br>
+    <a href="https://play.unity.com/mg/other/webgl-builds-131003">https://play.unity.com/mg/other/webgl-builds-131003</a>
+    <br>
+    The link was then sent to family and friends and
+    as of the time of writing this report, the game
+    had 32 views, 30 plays, 6 comments and 3
+    (positive) reactions. The feedback collected
+    through the comments section was also positive,
+    indicating that the online visitors had enjoyed
+    the experience. Through private messages, some
+    commented that they were unsure about how to
+    control the character, for this reason I added the
+    controls button in the UI of the final project. I
+    also moved the labels for the 3D models from
+    the side to the top since some people informed
+    me that they were not easy to read in their initial
+    position on the side.
+    <br><br>
+
+    This project showcased the work undertaken
+    over the span of a few months as well as
+    pictures gathered over the past years. In this
+    personal collection, the museum visitors could
+    hopefully get a better feeling for what life is like
+    in Malta and in Sweden, the colours that colour
+    both places and the distinct styles that make
+    both countries so beautiful and unique.
+    <br><br>
+
+    After working on this project I have found that I
+    really enjoyed using the Unity engine and I feel
+    that I have a better understanding of how virtual
+    spaces can be used to showcase works
+    interactively. I have also learnt a lot of new skills
+    within the engine.
+    <br><br>
+
+    To allow others to experience and enjoy this
+    from their own computer, I made the project
+    available using Unity’s Share WebGL package. I
+    found the comment functionality on the website
+    to also be useful for getting feedback from the
+    online museum visitors.
+  </p>
+
+  <h1>References</h1>
+  <ul>
+    <li>AgiSoft PhotoScan Standard (Version 1.7.5)
+      (Software). (2021). Retrieved from
+      <a href="http://www.agisoft.com/downloads/installer/">
+      http://www.agisoft.com/downloads/installer/</a>
+    </li>
+
+    <li>Dalecarlian Horse by Mariia Drozdova,
+      [Accessed 12 December 2021].
+      <a href="https://sketchfab.com/3d-models/dalecarlian-horse-bf0c58a7d931482cacad3319bba99093">
+      https://sketchfab.com/3d-models/dalecarlian-horse-bf0c58a7d931482cacad3319bba99093</a>
+    </li>
+
+    <li>“FIRST PERSON MOVEMENT in Unity - FPS
+      Controller”, YouTube, uploaded by Brackeys, 27
+      October 2019,
+      <a href="https://www.youtube.com/watch?v=_QajrabyTJc">
+      https://www.youtube.com/watch?v=_QajrabyTJc</a>     
+    </li>
+
+    <li>Formosa, S. (2014). Neogeography and
+      preparedness for real-to-virtual world
+      knowledge transfer : conceptual steps to
+      Minecraft Malta. Future Internet, 6(3), 542-555.
+    </li>
+
+    <li>
+      Hayashi M. (2021), MetaShape workshop-
+      Lecture 8, uploaded to Uppsala University
+      Stadium.
+    </li>
+
+    <li>
+      “HOW TO CREATE A TRUE MIRROR
+      REFLECTION IN UNITY TUTORIAL”, YouTube,
+      uploaded by Jimmy Vegas, 2 July 2019,
+      <a href="https://www.youtube.com/watch?v=U9yTnRuU--A">
+      https://www.youtube.com/watch?v=U9yTnRuU--A</a>
+    </li>
+
+    <li>
+      “How to import Real World Height Maps into
+      Blender!”, YouTube, uploaded by BlenderDaily,
+      27 March 2020,
+      <a href="https://www.youtube.com/watch?v=6so8Ov0UE1k">
+      https://www.youtube.com/watch?v=6so8Ov0UE1k</a>
+    </li>
+
+    <li>
+      Kajjik by Daniel B.,
+      <a href="https://3dwarehouse.sketchup.com/model/9252
+      6c3d-3990-492c-88d4-28f6398df1df/Kajjik?hl=
+      en&login=true#">
+      https://3dwarehouse.sketchup.com/model/9252
+      6c3d-3990-492c-88d4-28f6398df1df/Kajjik?hl=
+      en&login=true#</a>
+      . [Access 8 December 2021].
+    </li>
+
+    <li>
+      Nathan NSR, Sweden - Black and white map
+      uploaded to Dribbble.
+      <a href="https://dribbble.com/shots/15138661-Sweden-Black-and-white-map#">
+      https://dribbble.com/shots/15138661-Sweden-Black-and-white-map#
+      </a>
+    </li>
+
+    <li>
+      “Smooth PORTALS in Unity”, YouTube, uploaded
+      by Brackeys, 7 January 2018,
+      <a href="https://www.youtube.com/watch?v=cuQao3hEKfs">
+      https://www.youtube.com/watch?v=cuQao3hEKfs</a>
+    </li>
+
+    <li>
+      Unity – Game Engine [ONLINE]
+      <a href="https://unity3D.com/unity">https://unity3D.com/unity</a>
+      [Accessed 9 November 2021].
+    </li>
+
+    <li>
+      “Unity Tutorial: Open Panel on Button Click”, YouTube, uploaded by Jayanam, 26 September 2018,
+      <a href="https://www.youtube.com/watch?v=LziIlLB2Kt4">
+      https://www.youtube.com/watch?v=LziIlLB2Kt4</a>
+    </li>
+
+    <li>
+      Unity Tutorial - 3D Spinning Cube in 10 minutes, Microsoft.net,
+      <a href="https://dotnet.microsoft.com/en-us/learn/games/unity-tutorial/intro">
+      https://dotnet.microsoft.com/en-us/learn/games/unity-tutorial/intro,</a>
+      [Accessed 10 December 2021].
+    </li>
+
+  </ul>
 </div>
 
 </body>
