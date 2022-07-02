@@ -28,11 +28,8 @@
     </a>
   </div>
 
-<div>
-  <h1>No place like homes.</h1>
-
-  <iframe src="https://i.simmer.io/@abigalea45/no-place-like-homes" style="width:960px;height:600px"></iframe>
-  
+<div style="width:960px; padding:25px">
+  <h1>No place like homes.</h1>  
   <p>
     Growing up, I have always lived in Malta, an
     archipelago of three tiny islands in the middle of
@@ -63,22 +60,26 @@
     The following subsections will explain the
     process of making and putting together
     everything. Firstly a brief explanation of how the
-    first person controller was made will be given in
-    2.1. In 2.2 the set up of space and portal will be
+    first person controller was made will be given.
+    The set up of space and portal will be
     explained. Then an explanation will be given for
     how the height maps of the countries were
-    made in 2.3. The process of making the picture
-    frames in Blender will be explained in 2.4. 2.5
-    will describe briefly how the spin animation was
+    made. The process of making the picture
+    frames in Blender will be explained. I will also
+    describe briefly how the spin animation was
     added to the boat model and in the following
-    subsection (2.6) an explanation of how the
+    subsection an explanation of how the
     mirrors on the wall were made and rendered
     will be given. An explanation of how
     photogrammetry was used to create the 3D
-    model of the pastizzi will be given in 2.7. In 2.8,
-    a short description of the user interface will be
+    model of the pastizzi will be given. A 
+    short description of the user interface will be
     given.
   </p>
+
+  <p>Give it a try and read about the process of making it below!</p>
+ 
+  <iframe src="https://i.simmer.io/@abigalea45/no-place-like-homes" style="width:960px;height:600px"></iframe>
 
   <h1>First person controller (FPC)</h1> 
   <p>
@@ -94,7 +95,7 @@
     be.
     <br><br>
 
-    A script is added for controlling the movement
+    A script was added for controlling the movement
     of the camera using the mouse. The main idea of
     this script is that as the mouse is moved left and
     right, the entire player body is spun around.
@@ -105,9 +106,9 @@
     x-axis and 180° on the y-axis).
     <br><br>
 
-    Furthermore, another script is used to allow the
+    Furthermore, another script was used to allow the
     player to move around using the arrow keys.
-    Essentially the script takes key presses as
+    Essentially this script took key presses as
     controls to transform the location of the player
     within the world, taking into consideration the
     current location and looking direction.
@@ -123,18 +124,18 @@
 
     The set-up starts off with two areas being
     created. Portals are then added to both rooms
-    and planes are placed inside them facing
+    and flat planes are placed inside them facing
     opposite directions. Similar to the process of
-    making mirrors (explained in 2.6), the planes
-    used camera images to constantly render and
+    making mirrors (explained later in the mirrors section),
+    the planes used camera images to constantly render and
     show what the other world looked like based on
     where the player was positioned and looking.
     <br><br>
 
     Using scripts and an additional collider plane in
-    every portal the player is then allowed to move
-    from one world to another. In essence when the
-    player body collides with the plane in the portal
+    every portal, the player was then allowed to move
+    from one world to another. When the
+    player body collides with the plane inside the portal
     from the correct direction, their body is moved to
     the location of the other plane with a few
     adjustments to make the transition feel natural.
@@ -143,8 +144,7 @@
 <h1>Height maps</h1>
   <p>
     Using black and white 2D height maps available
-    online for Malta (Fig. 2.3.1) and Sweden (Fig.
-    2.3.2), Blender was used to build 3D height
+    online for Malta and Sweden, Blender was used to build 3D height
     maps. The process involved importing the 2D
     images into Blender and then using their pixel
     brightness as an indicator of height. The darkest
@@ -161,8 +161,7 @@
     subtracted from the other using the boolean
     operator to give the frame shape. A different
     material was given to the face which would hold
-    the image and the model was exported to Unity
-    (Fig. 2.4.1).
+    the image and the model was exported to Unity.
   </p>
 
 <h1>Boat spinning animation</h1>
@@ -221,8 +220,10 @@
     attaching a short script to a UI button object,
     which activated and deactivated the controls
     help panel depending on the current status.
-    <br><br>
+  </p>
 
+<h1>Description of final product</h1>
+  <p>
     The final product of this work was a 3D virtual
     museum project in Unity. Visitors to this virtual
     museum could walk around the space and
@@ -230,7 +231,7 @@
     Upon entering the museum, the visitor sees a
     wall of pictures of Malta, on a traditional
     limestone brick wall, and a floor covered in
-    traditional Maltese tiles (Fig.3.1). To their left
+    traditional Maltese tiles. To their left
     they see a portal arch that leads to Sweden’s
     exhibit, ahead of them, a 3D model of a
     traditional Maltese fishing boat called a Kajjik
@@ -255,8 +256,10 @@
     reminds me of life in Sweden because I got one
     as a Christmas gift from one of my friends in
     Sweden and I always keep it in my room.
-    <br><br>
+  </p>
 
+<h1>Evaluation</h1>
+  <p>
     To review how the museum was received, the
     project was made available online at the
     following link:
@@ -305,7 +308,7 @@
     online museum visitors.
   </p>
 
-  <h1>References</h1>
+<h1>References</h1>
   <ul>
     <li>AgiSoft PhotoScan Standard (Version 1.7.5)
       (Software). (2021). Retrieved from
